@@ -1,106 +1,131 @@
-.task-list {
+/* App.css */
+
+/* General styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* App container */
+.app {
+  display: flex;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  background-color: #343a40;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+.sidebar a {
+  color: #ffffff;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #495057;
+}
+
+/* TopBar styling */
+.topbar {
+  background-color: #ffffff;
+  padding: 15px;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.topbar .user-info span {
+  margin-right: 15px;
+}
+
+/* Main content styling */
+.main {
+  flex: 1;
   padding: 20px;
 }
 
-.task-cards {
+.card-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 23%;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h3 {
+  margin-bottom: 15px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
 }
 
 .task-card {
-  background: #a7a5a5;
-  color: black;
-  padding: 20px;
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #dee2e6;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 300px;
 }
 
-.task-card h3 {
-  margin-top: 0;
-}
-
-.task-card div {
+.task-card .task-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.task-card .task-details {
   margin-top: 10px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-input,
-textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  padding: 10px;
+.task-card .bid-button {
   background-color: #007bff;
-  color: white;
+  color: #ffffff;
+  padding: 10px;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.auth-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.auth-container h2 {
-  margin-top: 0;
-}
-
-.auth-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.auth-container input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.auth-container button {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
-.auth-container button:hover {
+.task-card .bid-button:hover {
   background-color: #0056b3;
-}
-
-.auth-container .error {
-  color: red;
-  margin-bottom: 10px;
-}
-
-.auth-container p {
-  margin-top: 10px;
-}
-
-.auth-container a {
-  color: #007bff;
 }
