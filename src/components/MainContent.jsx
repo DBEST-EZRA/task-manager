@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { MetroSpinner } from "react-spinners-kit";
 import { db } from "./Config";
 
 const MainContent = () => {
   const [tasks, setTasks] = useState([]);
   const [notices, setNotices] = useState([]);
-  const [taskcount, setTaskCount] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const generateRandomNumber = () => {
     const min = 120;
@@ -21,8 +22,10 @@ const MainContent = () => {
       try {
         const response = await axios.get("http://localhost:5000/tasks");
         setTasks(response.data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching tasks: ", error);
+        setLoading(false);
       }
     };
 
@@ -34,8 +37,10 @@ const MainContent = () => {
       try {
         const response = await axios.get("http://localhost:5000/notices");
         setNotices(response.data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching notices: ", error);
+        setLoading(false);
       }
     };
 
@@ -105,27 +110,33 @@ const MainContent = () => {
                 <th>Price</th>
               </tr>
             </thead>
-            <tbody>
-              {tasks.map((task) => (
-                <tr key={task.id}>
-                  <td>
-                    <p>
-                      <span className="title-bold">{task.title}</span>{" "}
-                      {task.description}
-                    </p>
-                  </td>
-                  <td>{task.deadline}</td>
-                  <td>
-                    <button className="bid-button">Bid</button>
-                  </td>
-                  <td>
-                    <p className="amount-d">{task.price}</p>
-                  </td>
-                </tr>
-              ))}
+            {loading ? (
+              <div className="spinner">
+                <MetroSpinner size={40} color="orangered" loading={loading} />
+              </div>
+            ) : (
+              <tbody>
+                {tasks.map((task) => (
+                  <tr key={task.id}>
+                    <td>
+                      <p>
+                        <span className="title-bold">{task.title}</span>{" "}
+                        {task.description}
+                      </p>
+                    </td>
+                    <td>{task.deadline}</td>
+                    <td>
+                      <button className="bid-button">Bid</button>
+                    </td>
+                    <td>
+                      <p className="amount-d">{task.price}</p>
+                    </td>
+                  </tr>
+                ))}
 
-              {/* More rows as needed */}
-            </tbody>
+                {/* More rows as needed */}
+              </tbody>
+            )}
           </table>
         </div>
         <div className="todo">
@@ -134,16 +145,22 @@ const MainContent = () => {
             <i className="bx bx-plus"></i>
             <i className="bx bx-filter"></i>
           </div>
-          <ul className="todo-list">
-            {notices.map((notice) => (
-              <li key={notice.id} className="not-completed">
-                <p>{notice.message}</p>
-                <i className="bx bx-dots-vertical-rounded"></i>
-              </li>
-            ))}
+          {loading ? (
+            <div className="spinner">
+              <MetroSpinner size={40} color="orangered" loading={loading} />
+            </div>
+          ) : (
+            <ul className="todo-list">
+              {notices.map((notice) => (
+                <li key={notice.id} className="not-completed">
+                  <p>{notice.message}</p>
+                  <i className="bx bx-dots-vertical-rounded"></i>
+                </li>
+              ))}
 
-            {/* More todo items as needed */}
-          </ul>
+              {/* More todo items as needed */}
+            </ul>
+          )}
         </div>
       </div>
     </main>
