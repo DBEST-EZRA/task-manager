@@ -19,7 +19,7 @@ const Orders = () => {
       <h2>Tasks</h2>
       <div className="task-cards">
         {tasks.map((task) => (
-          <div className="task-card">
+          <div className="task-card" key={task.id}>
             <h3>{task.title}</h3>
             <p>{task.description}</p>
             <p>{task.price}</p>

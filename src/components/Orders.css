@@ -27,3 +27,15 @@
   justify-content: space-between;
   margin-top: 10px;
 }
+
+.message-card {
+  background: #ffffff;
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-left: 6px solid #059440;
+  margin: 10px;
+  /* max-width: 300px; */
+}
