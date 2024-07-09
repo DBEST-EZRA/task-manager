@@ -15,6 +15,7 @@ import Messages from "./components/Messages";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import SignupDetails from "./components/SignupDetails";
+import AdminDashboard from "./components/AdminDashboard";
 
 const AppContent = () => {
   const [isSidebarHidden, setIsSidebarHidden] = useState(
@@ -33,7 +34,10 @@ const AppContent = () => {
   }, []);
 
   const shouldHideSidebarAndNavbar =
-    location.pathname === "/" || location.pathname === "/signup";
+    location.pathname === "/" ||
+    location.pathname === "/signup" ||
+    location.pathname === "/signup/details" ||
+    location.pathname === "/c1037f68-9cba-4323-bd00-cd4919b72e34";
 
   return (
     <div className={`App ${isDarkMode ? "dark" : ""}`}>
@@ -61,6 +65,10 @@ const AppContent = () => {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup/details" element={<SignupDetails />} />
+          <Route
+            path="/c1037f68-9cba-4323-bd00-cd4919b72e34"
+            element={<AdminDashboard />}
+          />
           <Route path="/2FyheZmcXV0OQTTxwoQQqE" element={<MainContent />} />
           <Route path="/2FyheZmcXV0OQTTxwoQQqE/tasks" element={<Orders />} />
           <Route
