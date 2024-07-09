@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Navbar = ({
   isSidebarHidden,
@@ -6,6 +6,8 @@ const Navbar = ({
   isDarkMode,
   toggleDarkMode,
 }) => {
+  const [totalCount, setTotalCount] = useState(0);
+
   return (
     <nav>
       <i className="bx bx-menu" onClick={toggleSidebar}></i>
@@ -26,7 +28,7 @@ const Navbar = ({
       <label htmlFor="switch-mode" className="switch-mode"></label>
       <a href="#" className="notification">
         <i className="bx bxs-bell"></i>
-        <span className="num">8</span>
+        <span className="num">{totalCount}</span>
       </a>
       <a href="#" className="profile">
         <img src="https://via.placeholder.com/36" alt="profile" />

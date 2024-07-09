@@ -39,3 +39,6 @@
   margin: 10px;
   /* max-width: 300px; */
 }
+.title-bold {
+  font-weight: bold;
+}

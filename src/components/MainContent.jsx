@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { db } from "./Config";
 
 const MainContent = () => {
   const [tasks, setTasks] = useState([]);
   const [notices, setNotices] = useState([]);
+  const [taskcount, setTaskCount] = useState(0);
+
+  const generateRandomNumber = () => {
+    const min = 120;
+    const max = 700;
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randomNumber;
+  };
+
+  const randomNumber = generateRandomNumber();
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -58,7 +70,7 @@ const MainContent = () => {
         <li>
           <i className="bx bxs-calendar-check"></i>
           <span className="text">
-            <h3>1020</h3>
+            <h3>{randomNumber}</h3>
             <p>Available Tasks</p>
           </span>
         </li>
@@ -97,7 +109,10 @@ const MainContent = () => {
               {tasks.map((task) => (
                 <tr key={task.id}>
                   <td>
-                    <p>{task.description}</p>
+                    <p>
+                      <span className="title-bold">{task.title}</span>{" "}
+                      {task.description}
+                    </p>
                   </td>
                   <td>{task.deadline}</td>
                   <td>
@@ -121,7 +136,7 @@ const MainContent = () => {
           </div>
           <ul className="todo-list">
             {notices.map((notice) => (
-              <li className="not-completed">
+              <li key={notice.id} className="not-completed">
                 <p>{notice.message}</p>
                 <i className="bx bx-dots-vertical-rounded"></i>
               </li>
