@@ -16,6 +16,7 @@ const Orders = () => {
 
   return (
     <div className="task-list">
+      <h2>Tasks</h2>
       <div className="task-cards">
         {tasks.map((task) => (
           <div className="task-card">
